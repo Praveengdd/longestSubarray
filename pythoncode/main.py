@@ -4,17 +4,18 @@
 arr = list(map(int, input("Enter the array elements seperated by space: ").split()))
 target = int(input("Enter the target: "))
 
-#brute force approach
+#brute force approach with only two for loops
 mlen = 0
 
 for i in range(len(arr)):
+    summ = 0
+    count = 0
     for j in range(i, len(arr)):
-        summ = 0
-        count = 0
-        for k in range(i, j + 1):
-            summ += arr[k]
-            count += 1
+        summ += arr[j]
+        count += 1
         if summ == target:
-            mlen = max(count, mlen)
+            mlen = max(mlen, count)
+        
+        
             
 print("Maximum length subarray's length is", mlen)
