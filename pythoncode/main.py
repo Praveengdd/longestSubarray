@@ -7,22 +7,21 @@ target = int(input("Enter the target: "))
 #brute force approach with only two for loops
 mlen = 0
 
-arr.sort()
+dic = {}
+ps = 0
+summ = 0
 
-i = 0
-j = 0
-summ = arr[i]
-while i < len(arr):
-    while j <= i and summ > target:
-        summ -= arr[j]
-        j += 1
+for i in range(len(arr)):
+    ps += arr[i]
+    
+    if ps == target:
+        mlen = max(mlen, i + 1)
         
-    if summ == target:
-        mlen = max(mlen, i - j + 1)
+    if ps - target in dic:
+        mlen = max(mlen, i - dic[ps - target])
         
-    i += 1
-    if i < len(arr):
-        summ += arr[i]
+    if ps not in dic:
+        dic[ps] = i
         
         
             
